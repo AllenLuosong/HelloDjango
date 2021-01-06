@@ -1,0 +1,51 @@
+{% extends  "base.html" %}
+
+<!--使用模板来生成数据，使数据和视图分离-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--<p>{{ hello }}</p>-->
+<!--<p>{{view_list}}</p>-->
+<!--<p>{{view_list.0}}</p>-->
+<!--<p>{{view_dict}}</p>-->
+<!--<p>{{view_dict.name}}</p>-->
+<!-- 变量名 | 过滤器：可选参数-->
+{{name|default:"菜鸟教程666"}} <!-- name | 默认返回：菜鸟教程666-->
+{{name|length}}               <!-- name | 返回name长度-->
+{{ time|date:"Y-m-d H:m:s" }} <!-- time | 返回date函数 返回年月日时分秒-->
+{{view_str|truncatechars:2}}  <!-- view_str | 截取字符串：截取前两个字符-->
+{%if num > 90 and num <= 100 %} <!-- 注意 比较运算符的位置 前后要有空格-->
+优秀
+{%elif num > 60 and num < 90%}
+合格
+{%else%}
+一边玩去
+{%endif%}
+{#注释#}
+{% for i in view_list reversed%}
+{{ i }}
+{% endfor %}
+
+{%for i, j in view_dict.items %}
+{{i}}:{{j}}
+{%endfor%}
+
+{%load static%}
+{#引用资源文件中的图片文件#}
+{{name}}<img src="{%static 'images/runoob-logo.png/' %}" alt=runoob-log">
+
+{% block mainbody %}
+<p>继承了 base.html</p>
+{%for i, j in view_dict.items %}
+{{i}}:{{j}}
+{%endfor%}
+{% endblock %}
+

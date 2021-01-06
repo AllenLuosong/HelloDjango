@@ -1,0 +1,22 @@
+<!--<#模板继承#>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜鸟教程django测试</title>
+</head>
+<body>
+    <h>Hello Django</h>
+    <p>菜鸟教程 Django测试</p>
+        {%load static%}
+    {#引用资源文件中的图片文件#}
+    {{name}}<img src="{%static 'images/runoob-logo.png/' %}" alt=runoob-log">
+    {% block mainbody %}
+    <# {% block} 子模板可重载该部分内容#>
+        <p>original</p>
+            <p>test</p>
+
+    {% endblock %}
+</body>
+</html>
